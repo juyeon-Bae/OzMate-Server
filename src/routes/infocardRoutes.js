@@ -21,7 +21,7 @@ router.get('/category', async (req, res) => {
         const { type } = req.query;
         let cards;
 
-        if (type === "전체") {
+        if (type === "ALL") {
             cards = await Card.find().sort({ createdAt: -1 }) //최신순으로 정렬
         } else {
             cards = await Card.find({ category: type }).sort({ createdAt: -1 })
@@ -32,6 +32,26 @@ router.get('/category', async (req, res) => {
         res.status(500).json({ message: '불러오기 실패' })
     }
 })
+
+// 상세 페이지 조회
+/* 
+router.get('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const card = await Card.findById(id);
+
+        if (!card) {
+            return res.status(404).json({ message: '카드를 찾을 수 없어요.' });
+        }
+
+        res.json(card);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+*/
+
 
 // 정보 카드 삭제
 router.delete('/delete', async (req, res) => {
@@ -52,6 +72,16 @@ router.delete('/delete', async (req, res) => {
 
     } catch (err) {
         res.status(500).json({ message: '삭제 실패' })
+    }
+})
+
+//모든 정보 삭제
+router.delete('/deleteAll', async (req, res) => {
+    try {
+        const result = await Card.deleteMany({})
+        res.json({ message: '모든 카드 삭제 완료' })
+    } catch (err) {
+        res.status(500).json({ message: '모두 삭제 실패함', err })
     }
 })
 
