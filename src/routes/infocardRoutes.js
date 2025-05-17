@@ -34,23 +34,20 @@ router.get('/category', async (req, res) => {
 })
 
 // 상세 페이지 조회
-/* 
 router.get('/:id', async (req, res) => {
     try {
         const { id } = req.params;
-
         const card = await Card.findById(id);
 
         if (!card) {
-            return res.status(404).json({ message: '카드를 찾을 수 없어요.' });
+            return res.status(404).json({ message: '카드를 찾을 수 없음' });
         }
 
         res.json(card);
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500).json({ message: '서버 오류' });
     }
 });
-*/
 
 
 // 정보 카드 삭제
