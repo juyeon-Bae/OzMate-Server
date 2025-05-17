@@ -13,7 +13,8 @@ router.post('/', async (req, res) => {
         const { message } = req.body;
 
         const result = await model.generateContent(message)
-        const reply = result.response.text()
+        let reply = result.response.text()
+        reply = reply.replace(/\*\*/g, '')
 
         res.json({ reply })
     } catch (err) {
