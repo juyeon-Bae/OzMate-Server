@@ -22,9 +22,9 @@ router.get('/category', async (req, res) => {
         let cards;
 
         if (type === "ALL") {
-            cards = await Card.find().sort({ createdAt: -1 }) //최신순으로 정렬
+            cards = await Card.find()
         } else {
-            cards = await Card.find({ category: type }).sort({ createdAt: -1 })
+            cards = await Card.find({ category: type })
         }
 
         res.json(cards);
