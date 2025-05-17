@@ -31,6 +31,7 @@ const loginController = {
             return res.status(200).json({
                 message: '로그인 성공',
                 username: user.username,
+                userId: user._id,
                 token
             });
 
