@@ -22,4 +22,17 @@ router.post('/', async (req, res) => {
     }
 })
 
+//북마크 삭제
+router.delete('/', async (req, res) => {
+    const { userId, cardId } = req.body;
+
+    try {
+        const deleteItem = await BookMark.findOneAndDelete({ userId, cardId })
+        res.json({ message: '북마크 제거됨', '제거된 북마크': deleteItem })
+    }
+    catch (err) {
+        res.status(500).json({ message: '북마크 삭제 실패', err })
+    }
+})
+
 module.exports = router;
