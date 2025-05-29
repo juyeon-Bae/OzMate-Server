@@ -11,7 +11,8 @@ const loginRoutes = require('./routes/loginRoutes')
 const infocardRoutes = require('./routes/infocardRoutes')
 const chatbotRoutes = require('./routes/chatbotRoutes')
 const exchangeRateRoutes = require('./routes/exchangeRateRoutes')
-const bookMarkRoutes = require('./routes/bookMarkRoutes')
+const bookMarkRoutes = require('./routes/bookMarkRoutes');
+const feedBackRoutes = require('./routes/feedBackRoutes')
 
 app.use(cors());
 app.use(express.json());
@@ -27,6 +28,7 @@ app.use('/infocard', infocardRoutes);
 app.use('/chatbot', chatbotRoutes);
 app.use('/exchange-rate', exchangeRateRoutes);
 app.use('/bookmark', bookMarkRoutes);
+app.use('/feedback', feedBackRoutes);
 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`server ${PORT}에서 실행중임`)
