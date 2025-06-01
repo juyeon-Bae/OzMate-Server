@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 const router = express.Router()
 
 //랜덤으로 3개씩 카드 조회 api
-router.get('/', async (req, res) => {
-    const { cardId } = req.body;
+router.get('/:cardId', async (req, res) => {
+    const { cardId } = req.params;
     if (!cardId) {
         return res.status(400).json({ message: 'cardId가 필요합니다.' });
     }
