@@ -13,6 +13,7 @@ const chatbotRoutes = require('./routes/chatbotRoutes')
 const exchangeRateRoutes = require('./routes/exchangeRateRoutes')
 const bookMarkRoutes = require('./routes/bookMarkRoutes');
 const feedBackRoutes = require('./routes/feedBackRoutes')
+const randomCardRoutes = require('./routes/randomCardsRoutes')
 
 app.use(cors());
 app.use(express.json());
@@ -29,6 +30,7 @@ app.use('/chatbot', chatbotRoutes);
 app.use('/exchange-rate', exchangeRateRoutes);
 app.use('/bookmark', bookMarkRoutes);
 app.use('/feedback', feedBackRoutes);
+app.use('/random', randomCardRoutes);
 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`server ${PORT}에서 실행중임`)
